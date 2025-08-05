@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Day for You</title>
+
+  <!-- External Libraries -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      background-color: #0c0a09;
+      font-family: 'Satoshi', sans-serif;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    main {
+      width: 100%;
+      max-width: 480px; /* keeps content mobile-friendly */
+      padding: 1rem;
+    }
+
+    .bento-card {
+      background-size: cover;
+      background-position: center;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      min-height: 200px;
+    }
+    .bento-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20,18,26,0.9), rgba(20,18,26,0.4));
+    }
+    .bento-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    h1, h2 {
+      word-break: break-word;
+    }
+
+    #final-photo-collage {
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div id="aurora-background"></div>
+  <canvas id="hearts-canvas"></canvas>
+
+  <main>
+    <!-- Step 1 -->
+    <div id="step-1" class="step glass-card p-6 text-center">
+      <div class="text-5xl mb-4">❤️</div>
+      <h1 class="gradient-text text-3xl font-bold mb-4">Hey Beautiful,</h1>
+      <p class="text-base text-gray-300 mb-6">I built a little world for you, just to bring a smile to your face.</p>
+      <button data-next="2" class="next-btn glow-button py-2 px-6 rounded-full text-base">Let’s Begin</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div id="step-2" class="step glass-card p-6 text-center">
+      <div class="text-5xl mb-4">🎉</div>
+      <h1 class="gradient-text text-2xl font-bold mb-4">Happy Birthday ALEEZAY</h1>
+      <p class="text-sm text-gray-300 mb-4">Another year of you making the world brighter.</p>
+      <img src="123/3455.jpg" alt="Portrait" class="w-28 h-28 rounded-full mx-auto mb-6 border-2 border-pink-400">
+      <button data-next="3" class="next-btn glow-button py-2 px-6 rounded-full text-base">There's more...</button>
+    </div>
+
+    <!-- Step 3 -->
+    <div id="step-3" class="step glass-card p-6 text-center">
+      <h1 class="gradient-text text-2xl font-bold mb-6">A Few Things I Adore About You</h1>
+      <div class="grid grid-cols-1 gap-4">
+        <div class="bento-card p-4 flex flex-col justify-end" style="background-image: url('123/t2.jpg');">
+          <div>
+            <h2 class="text-lg font-bold">✨ Your Kindness</h2>
+            <p class="text-sm text-gray-200">The genuine warmth you show is rare and beautiful.</p>
+          </div>
+        </div>
+        <div class="bento-card p-4 flex flex-col justify-end" style="background-image: url('123/spring-garden.jpg');">
+          <div>
+            <h2 class="text-lg font-bold">😊 That Smile</h2>
+            <p class="text-sm text-gray-200">It's a work of art.</p>
+          </div>
+        </div>
+      </div>
+      <button data-next="4" class="next-btn glow-button py-2 px-6 rounded-full text-base mt-6">Remember this?</button>
+    </div>
+
+    <!-- Step 4 -->
+    <div id="step-4" class="step glass-card p-6 text-center">
+      <h1 class="gradient-text text-2xl font-bold mb-4">That One Time...</h1>
+      <div class="relative w-full max-w-xs mx-auto mb-4">
+        <img src="123/spring-garden.jpg" alt="Memory" class="w-full rounded-lg">
+        <p class="absolute bottom-2 left-0 right-0 text-gray-800 font-semibold text-center">Your Favourite.</p>
+      </div>
+      <p class="text-sm text-gray-300 mb-6">Every moment with you feels like a scene from a movie I'd watch on repeat.</p>
+      <button data-next="5" class="next-btn glow-button py-2 px-6 rounded-full text-base">One last thing...</button>
+    </div>
+
+    <!-- Step 5 -->
+    <div id="step-5" class="step glass-card p-6 text-center relative">
+      <div id="final-photo-collage" style="background-image: url('123/1234.jpg'); min-height: 200px;"></div>
+      <div class="text-5xl mb-4">🎂</div>
+      <h1 class="gradient-text text-2xl font-bold mb-4">My Wish For You</h1>
+      <p class="text-sm text-gray-300 mb-6">May the next year bring you all the love, success, and happiness you deserve.</p>
+      <p id="final-message" class="text-lg font-bold opacity-0">Happy Birthday, my cutie! ❤️</p>
+      <button id="celebrate-btn" class="glow-button py-2 px-6 rounded-full text-base mt-4">Celebrate!</button>
+    </div>
+  </main>
+</body>
+</html>
